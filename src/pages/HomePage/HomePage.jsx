@@ -12,30 +12,6 @@ const Stack = contentstack.Stack({
 
 // =====================================================================================
 
-// const Query = Stack.ContentType("author").Entry("blt9796e112d8927f37");
-// Query.fetch().then(
-//   function success(entry) {
-//     console.log(entry.get("title")); // Retrieve field value by providing a field's UID
-//     console.log(entry.toJSON()); // Convert the entry result object to JSON
-//   },
-//   function error(err) {
-//     // err object
-//   }
-// );
-
-// const Query = Stack.ContentType("author").Entry("entry_uid");
-
-// Query.fetch().then(
-//   function success(entry) {
-//     console.log(entry.get("title")); // Retrieve field value by providing a field's uid
-//     console.log(entry.toJSON()); // Convert the entry result object to JSON
-//   },
-//   function error(err) {
-//     // err object
-//   }
-// );
-
-// =======================================================================
 const Query = Stack.ContentType("book_details").Query();
 
 Query.where("title")
@@ -46,7 +22,6 @@ Query.where("title")
   .then(
     function success(result) {
       console.log(result);
-      console.log("AUTHOR", result[0][0].author[0].uid);
       // result is array where -
       // result[0] =&gt; entry objects
       // result[result.length-1] =&gt; entry objects count included only when .includeCount() is queried.
@@ -79,13 +54,36 @@ export const BOOKS = gql`
       title
       rating
       illustrations
-      author
+      authorData {
+        uid
+        title
+      }
     }
   }
 `;
 
+// export const BOOK = gql`
+//   query getBook($id: ID!) {
+//     book(id: $id) {
+//       uid
+//       title
+//       rating
+//       illustrations
+//       authorData {
+//         title
+//       }
+//     }
+//   }
+// `;
+
 const HomePage = () => {
+  const id = "blt1572880acdb5bf6b";
+  //for all books
   const { loading, error, data } = useQuery(BOOKS);
+  //for 1 book
+  // const { loading, error, data } = useQuery(BOOK, {
+  //   variables: { id },
+  // });
   console.log(data);
   console.log(error);
   return <div>HOME PAGE</div>;
