@@ -2,6 +2,7 @@
 // import s from "./HomePage.module.scss"
 import contentstack from "contentstack";
 import { useQuery, gql } from "@apollo/client";
+import Gallery from "../../components/Gallery/Gallery";
 
 const Stack = contentstack.Stack({
   api_key: process.env.REACT_APP_APIKEY,
@@ -21,7 +22,7 @@ Query.where("title")
   .find()
   .then(
     function success(result) {
-      console.log(result);
+      // console.log(result);
       // result is array where -
       // result[0] =&gt; entry objects
       // result[result.length-1] =&gt; entry objects count included only when .includeCount() is queried.
@@ -57,7 +58,31 @@ export const BOOKS = gql`
       authorData {
         uid
         title
+        date_of_birth
+        date_of_death
       }
+      genre {
+        title
+      }
+      images {
+        uid
+        title
+        content_type
+        url
+      }
+      locale
+      number_of_pages
+      publishing_house {
+        title
+        descriptionText
+        logo {
+          title
+          content_type
+          url
+        }
+      }
+      publishing_year
+      suggested_year
     }
   }
 `;
@@ -86,7 +111,7 @@ const HomePage = () => {
   // });
   console.log(data);
   console.log(error);
-  return <div>HOME PAGE</div>;
+  return <>{data && <Gallery books={data?.allBooks} />}</>;
 };
 
 export default HomePage;

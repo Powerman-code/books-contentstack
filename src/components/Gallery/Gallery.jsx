@@ -1,12 +1,20 @@
-const Gallery = () => {
+import BookCard from "../BookCard/BookCard";
+import {
+  GaleryWrapperStyled,
+  GaleryTitleStyled,
+  CardListStyled,
+} from "./Gallery.Styled";
+
+const Gallery = ({ books }) => {
   return (
-    <ul>
-      <li>Book1</li>
-      <li>Book2</li>
-      <li>Book3</li>
-      <li>Book4</li>
-      <li>Book5</li>
-    </ul>
+    <GaleryWrapperStyled>
+      <GaleryTitleStyled>Galery</GaleryTitleStyled>
+      <CardListStyled>
+        {books.map((book) => {
+          return <BookCard book={book} key={book.uid} />;
+        })}
+      </CardListStyled>
+    </GaleryWrapperStyled>
   );
 };
 

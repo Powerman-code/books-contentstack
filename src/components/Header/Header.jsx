@@ -4,7 +4,8 @@ import { useSelector } from "react-redux";
 import Container from "../Container/Container";
 import contentstack from "contentstack";
 import { useQuery, gql } from "@apollo/client";
-import { PageHeader, LogoWrapper, NavMenu } from "./Header.Styled";
+import { PageHeader } from "./Header.Styled";
+import Navigation from "../Navigation/Navigation";
 
 export const HEADER = gql`
   query MyQuery {
@@ -32,26 +33,12 @@ export const HEADER = gql`
 export default function Header() {
   const { loading, error, data } = useQuery(HEADER);
   const logo = data?.homepage?.Header?.logo;
-  const links = data?.homepage.Header.navigation_menu.navigation_menu_items;
-  // const links = navigation_menu?.navigation_menu_items;
-  console.log(data);
-  // console.log(links);
+  const links = data?.homepage?.Header.navigation_menu.navigation_menu_items;
+  // console.log(data);
   return (
     <Container>
       <PageHeader>
-        <LogoWrapper>
-          <img alt={logo?.title} src={logo?.url} />
-        </LogoWrapper>
-        <NavMenu>
-          {links?.map((link) => {
-            console.log(link);
-            return (
-              <li key={link.page_reference.uid}>
-                <NavLink to={link}>{link.label}</NavLink>
-              </li>
-            );
-          })}
-        </NavMenu>
+        <Navigation links={links} logo={logo} />
       </PageHeader>
     </Container>
   );

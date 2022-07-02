@@ -1,25 +1,43 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import Container from "../Container/Container";
-// import { Link, useLocation } from 'react-router-dom';
-// import { matchPath } from 'react-router';
+import { useQuery, gql } from "@apollo/client";
+import { PageFooter } from "./Footer.Styled";
+import Navigation from "../Navigation/Navigation";
 
-// import Navigation from "../Navigation";
-// import LeftMenu from "../Navigation/NavMenu/NavMenu";
-// import Social from "../Navigation/Social/Social";
+export const FOOTER = gql`
+  query MyQuery {
+    homepage {
+      Footer {
+        logo {
+          title
+          url
+        }
+        navigation_menu {
+          title
+          navigation_menu_items {
+            label
+            page_reference {
+              uid
+              title
+            }
+          }
+        }
+      }
+    }
+  }
+`;
 
 export default function Footer() {
+  const { loading, error, data } = useQuery(FOOTER);
+  const logo = data?.homepage?.Footer?.logo;
+  const links = data?.homepage?.Footer.navigation_menu.navigation_menu_items;
+  console.log(data);
   return (
     <Container>
-      <footer>
-        {/* <Navigation>
-          <LeftMenu />
-          <Social />
-        </Navigation> */}
-        <p>link 1</p>
-        <p>link 2</p>
-        <p>link 3</p>
-      </footer>
+      <PageFooter>
+        <Navigation links={links} logo={logo} />
+      </PageFooter>
     </Container>
   );
 }
