@@ -5,7 +5,7 @@ import { Route, Routes, Navigate } from "react-router-dom";
 import Layout from "./components/Layout/Layout";
 import HomePage from "./pages/HomePage/HomePage";
 import Page404 from "./pages/Page404";
-import OneBookPage from "./pages/SingleBookPage/SingleBookPage";
+import SingleBookPage from "./pages/SingleBookPage/SingleBookPage";
 
 function App() {
   // return <Router />;
@@ -13,10 +13,11 @@ function App() {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<HomePage />} />
-        <Route path="payment" element={<OneBookPage />} />
-        <Route path="about" element={<OneBookPage />} />
-        <Route path="delivery" element={<OneBookPage />} />
-        <Route path="blog" element={<OneBookPage />} />
+        <Route path="/galery/:id" element={<SingleBookPage />} />
+        <Route path="payment" element={<SingleBookPage />} />
+        <Route path="about" element={<SingleBookPage />} />
+        <Route path="delivery" element={<SingleBookPage />} />
+        <Route path="blog" element={<SingleBookPage />} />
         <Route path="*" element={<Page404 />} />
       </Route>
     </Routes>

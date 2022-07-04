@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const NavBlock = styled.nav`
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
 `;
 
 export const LogoWrapper = styled.div`

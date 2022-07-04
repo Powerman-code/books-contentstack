@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const PageHeader = styled.header`
-  display: flex;
   padding: 30px 0 67px;
   background-color: #9a4d36;
 

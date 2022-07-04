@@ -36,10 +36,10 @@ export default function Header() {
   const links = data?.homepage?.Header.navigation_menu.navigation_menu_items;
   // console.log(data);
   return (
-    <Container>
-      <PageHeader>
+    <PageHeader>
+      <Container>
         <Navigation links={links} logo={logo} />
-      </PageHeader>
-    </Container>
+      </Container>
+    </PageHeader>
   );
 }
