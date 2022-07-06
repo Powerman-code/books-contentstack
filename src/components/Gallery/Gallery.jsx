@@ -3,12 +3,15 @@ import {
   GaleryWrapperStyled,
   GaleryTitleStyled,
   CardListStyled,
+  TitleWrapperStyled,
 } from "./Gallery.Styled";
 
 const Gallery = ({ books }) => {
   return (
     <GaleryWrapperStyled>
-      <GaleryTitleStyled>Galery</GaleryTitleStyled>
+      <TitleWrapperStyled>
+        <GaleryTitleStyled>Galery</GaleryTitleStyled>
+      </TitleWrapperStyled>
       <CardListStyled>
         {books.map((book) => {
           return <BookCard book={book} key={book.uid} />;

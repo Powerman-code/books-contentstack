@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import Container from "../Container/Container";
+import { SCContainer } from "../Container/SCContainer.Styled";
 import contentstack from "contentstack";
 import { useQuery, gql } from "@apollo/client";
 import { PageHeader } from "./Header.Styled";
@@ -37,9 +37,9 @@ export default function Header() {
   // console.log(data);
   return (
     <PageHeader>
-      <Container>
+      <SCContainer bg={"#415380"} topRadius={10}>
         <Navigation links={links} logo={logo} />
-      </Container>
+      </SCContainer>
     </PageHeader>
   );
 }

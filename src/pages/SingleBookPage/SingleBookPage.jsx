@@ -2,10 +2,13 @@ import { useLocation, useParams } from "react-router-dom";
 import { useQuery, gql } from "@apollo/client";
 import { useEffect } from "react";
 import {
+  PageWrapperStyled,
   BookWrapperStyled,
-  ImageWrapper,
+  TitleWrapperStyled,
+  ImageStyled,
   BookTitleStyled,
   InfoWrapper,
+  InfoWrapperItem,
 } from "./SingleBookPage.Styled";
 
 export const BOOK = gql`
@@ -47,25 +50,8 @@ export const BOOK = gql`
   }
 `;
 
-const SingleBookPage = ({
-  // book: {
-  //   images,
-  //   authorData,
-  //   genre,
-  //   illustrations,
-  //   number_of_pages,
-  //   publishing_house,
-  //   publishing_year,
-  //   title,
-  //   rating,
-  //   suggested_year,
-  //   uid,
-  // },
-  book,
-}) => {
-  // const { pathname } = useLocation();
+const SingleBookPage = () => {
   const { id } = useParams();
-  //for 1 book
   const { loading, error, data } = useQuery(BOOK, {
     variables: { id },
   });
@@ -85,97 +71,53 @@ const SingleBookPage = ({
     suggested_year,
     uid,
   } = data.book;
-  // console.log("PATH", pathname);
   console.log(data);
   return (
     <>
       {data && (
-        <BookWrapperStyled>
-          <div>
+        <PageWrapperStyled>
+          <TitleWrapperStyled>
             <BookTitleStyled>{title}</BookTitleStyled>
-          </div>
-          <ImageWrapper>
-            <img src={images[0].url} alt={images[0].title} />
-          </ImageWrapper>
-          <InfoWrapper>
-            <div
-              style={{
-                display: "flex",
-                width: "400px",
-                justifyContent: "space-between",
-              }}
-            >
-              <p>Author</p>
-              <p>{authorData.title}</p>
+          </TitleWrapperStyled>
+
+          <BookWrapperStyled>
+            <div>
+              <ImageStyled src={images[0].url} alt={images[0].title} />
             </div>
-            <div
-              style={{
-                display: "flex",
-                width: "400px",
-                justifyContent: "space-between",
-              }}
-            >
-              <p>Genre</p>
-              <p>
-                {genre.map(({ title }) => {
-                  return title;
-                })}
-              </p>
-            </div>
-            <div
-              style={{
-                display: "flex",
-                width: "400px",
-                justifyContent: "space-between",
-              }}
-            >
-              <p>Illustrations</p>
-              <p>{illustrations}</p>
-            </div>
-            <div
-              style={{
-                display: "flex",
-                width: "400px",
-                justifyContent: "space-between",
-              }}
-            >
-              <p>Number of pages</p>
-              <p>{number_of_pages}</p>
-            </div>
-            {/* <div style={{ display: "flex",
-            width: "400px,"
-          justifyContent:  "space-between"}}>
-              <p>Publishing house</p>
-              <p>{publishing_house}</p>
-            </div> */}
-            <div
-              style={{
-                display: "flex",
-                width: "400px",
-                justifyContent: "space-between",
-              }}
-            >
-              <p>publishing_year</p>
-              <p>{publishing_year}</p>
-            </div>
-            {/* <div style={{ display: "flex",
-            width: "400px,"
-          justifyContent:  "space-between"}}>
-              <p>Rating</p>
-              <p>{rating}</p>
-            </div> */}
-            <div
-              style={{
-                display: "flex",
-                width: "400px",
-                justifyContent: "space-between",
-              }}
-            >
-              <p>For age of</p>
-              <p>{suggested_year}</p>
-            </div>
-          </InfoWrapper>
-        </BookWrapperStyled>
+            <InfoWrapper>
+              <InfoWrapperItem>
+                <p>Author</p>
+                <p>{authorData.title}</p>
+              </InfoWrapperItem>
+              <InfoWrapperItem>
+                <p>Genre</p>
+                <p>
+                  {genre.map(({ title }) => {
+                    return title;
+                  })}
+                </p>
+              </InfoWrapperItem>
+              <InfoWrapperItem>
+                <p>Illustrations</p>
+                <p>{illustrations}</p>
+              </InfoWrapperItem>
+              <InfoWrapperItem>
+                <p>Number of pages</p>
+                <p>{number_of_pages}</p>
+              </InfoWrapperItem>
+
+              <InfoWrapperItem>
+                <p>Publishing year</p>
+                <p>{publishing_year}</p>
+              </InfoWrapperItem>
+
+              <InfoWrapperItem>
+                <p>For age of</p>
+                <p>{suggested_year}</p>
+              </InfoWrapperItem>
+            </InfoWrapper>
+          </BookWrapperStyled>
+        </PageWrapperStyled>
       )}
     </>
   );

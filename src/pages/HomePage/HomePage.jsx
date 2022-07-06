@@ -102,7 +102,7 @@ export const BOOKS = gql`
 // `;
 
 const HomePage = () => {
-  const id = "blt1572880acdb5bf6b";
+  // const id = "blt1572880acdb5bf6b";
   //for all books
   const { loading, error, data } = useQuery(BOOKS);
   //for 1 book

@@ -20,7 +20,7 @@ export default function Navigation({ logo, links }) {
         {links?.map((link) => {
           //   console.log(link);
           return (
-            <NavItemStyled key={link.page_reference.uid}>
+            <NavItemStyled key={link.page_reference.uid} color={"#f2f2f2"}>
               <NavLink to={link}>{link.label}</NavLink>
             </NavItemStyled>
           );

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import Container from "../Container/Container";
+import { SCContainer } from "../Container/SCContainer.Styled";
 import { useQuery, gql } from "@apollo/client";
 import { PageFooter } from "./Footer.Styled";
 import Navigation from "../Navigation/Navigation";
@@ -34,10 +34,10 @@ export default function Footer() {
   const links = data?.homepage?.Footer.navigation_menu.navigation_menu_items;
   console.log(data);
   return (
-    <Container>
-      <PageFooter>
+    <PageFooter>
+      <SCContainer bg={"#8B468B"} bottomRadius={10}>
         <Navigation links={links} logo={logo} />
-      </PageFooter>
-    </Container>
+      </SCContainer>
+    </PageFooter>
   );
 }
