@@ -10,7 +10,7 @@ const Gallery = ({ books }) => {
   return (
     <GaleryWrapperStyled>
       <TitleWrapperStyled>
-        <GaleryTitleStyled>Galery</GaleryTitleStyled>
+        <GaleryTitleStyled>Book Galery</GaleryTitleStyled>
       </TitleWrapperStyled>
       <CardListStyled>
         {books.map((book) => {

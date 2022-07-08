@@ -10,5 +10,10 @@ export const TitleWrapperStyled = styled.div`
 export const GaleryTitleStyled = styled.h2``;
 
 export const CardListStyled = styled.ul`
-  display: flex;
+  display: grid;
+  max-width: 870px;
+  margin: 0 auto;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 30px;
+  grid-row-gap: 20px;
 `;

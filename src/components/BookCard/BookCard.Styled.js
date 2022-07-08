@@ -10,6 +10,11 @@ export const ImageWrapperStyled = styled.div`
   margin-bottom: 10px;
   align-items: center;
   max-width: 250px;
+
+  img {
+    height: 300px;
+    width: auto;
+  }
 `;
 
 export const CardInfoStyled = styled.ul``;

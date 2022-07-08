@@ -2,6 +2,7 @@ import styled, { css } from "styled-components";
 
 export const SCContainer = styled.div`
   max-width: 1370px;
+  height: 100%;
   margin: 0 auto;
   padding: 0 15px;
 

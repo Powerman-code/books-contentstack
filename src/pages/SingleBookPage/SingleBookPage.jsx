@@ -55,6 +55,7 @@ const SingleBookPage = () => {
   const { loading, error, data } = useQuery(BOOK, {
     variables: { id },
   });
+  const noInfo = "No information";
 
   if (loading) return <div>Loading...</div>;
 
@@ -69,6 +70,7 @@ const SingleBookPage = () => {
     title,
     rating,
     suggested_year,
+    description,
     uid,
   } = data.book;
   console.log(data);
@@ -114,6 +116,10 @@ const SingleBookPage = () => {
               <InfoWrapperItem>
                 <p>For age of</p>
                 <p>{suggested_year}</p>
+              </InfoWrapperItem>
+
+              <InfoWrapperItem>
+                <p>{description?.text}</p>
               </InfoWrapperItem>
             </InfoWrapper>
           </BookWrapperStyled>

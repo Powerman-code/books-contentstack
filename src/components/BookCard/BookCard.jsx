@@ -16,9 +16,16 @@ const BookCard = ({
   return (
     <CardStyled>
       <ImageWrapperStyled>
-        <img alt={images[0].title} src={images[0].url} />
+        <Link
+          to={{
+            pathname: `/galery/${uid}`,
+          }}
+        >
+          <img alt={images[0].title} src={images[0].url} />
+        </Link>
       </ImageWrapperStyled>
       <CardInfoStyled>
+        <Stars value={rating} />
         <Link
           to={{
             pathname: `/galery/${uid}`,
@@ -27,7 +34,6 @@ const BookCard = ({
           <CardTitleStyled>{title}</CardTitleStyled>
         </Link>
         <CardTextStyled>{authorData?.title}</CardTextStyled>
-        <Stars value={rating} />
       </CardInfoStyled>
     </CardStyled>
   );

@@ -22,7 +22,7 @@ Query.where("title")
   .find()
   .then(
     function success(result) {
-      // console.log(result);
+      console.log(result);
       // result is array where -
       // result[0] =&gt; entry objects
       // result[result.length-1] =&gt; entry objects count included only when .includeCount() is queried.
@@ -81,6 +81,9 @@ export const BOOKS = gql`
           url
         }
       }
+      description {
+        text
+      }
       publishing_year
       suggested_year
     }
@@ -109,8 +112,8 @@ const HomePage = () => {
   // const { loading, error, data } = useQuery(BOOK, {
   //   variables: { id },
   // });
-  console.log(data);
-  console.log(error);
+  console.log("DATA", data);
+  // console.log(error);
   return <>{data && <Gallery books={data?.allBooks} />}</>;
 };
 

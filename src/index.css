@@ -21,6 +21,11 @@ body {
   background-image: url(./assets/2423.jpg);
 }
 
+main > div,
+main > section {
+  min-height: 400px;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
