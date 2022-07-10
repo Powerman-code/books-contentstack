@@ -42,5 +42,6 @@ export const SCInfoWrapperItem = styled.div`
 `;
 
 export const SCDescriptionWrapper = styled.div`
-  max-width: 700px;
+  margin: 30px auto;
+  max-width: 750px;
 `;

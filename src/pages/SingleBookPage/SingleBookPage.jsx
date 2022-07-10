@@ -1,4 +1,4 @@
-import { useLocation, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useQuery, gql } from "@apollo/client";
 import { useEffect } from "react";
 import {
@@ -60,7 +60,9 @@ const SingleBookPage = () => {
   const { loading, error, data } = useQuery(BOOK, {
     variables: { id },
   });
-  const noInfo = "No information";
+
+  const navigate = useNavigate();
+  const goBack = () => navigate(-1);
 
   if (loading) return <div>Loading...</div>;
 
@@ -83,7 +85,9 @@ const SingleBookPage = () => {
     <>
       {data && (
         <SCPageWrapper>
-          <SCButton primary>Go Back</SCButton>
+          <SCButton primary onClick={goBack}>
+            Go Back
+          </SCButton>
           <SCTitleWrapper>
             <SCBookTitle>{title}</SCBookTitle>
           </SCTitleWrapper>

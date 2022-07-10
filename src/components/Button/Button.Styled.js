@@ -8,6 +8,7 @@ const SCButton = styled.button`
   justify-content: center;
   border: 1px solid #f2f2f2;
   border-radius: 8px;
+  cursor: pointer;
 
   ${({ primary }) =>
     primary &&
