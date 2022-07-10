@@ -1,29 +1,29 @@
 import styled from "styled-components";
 
-export const PageWrapperStyled = styled.div``;
+export const SCPageWrapper = styled.div``;
 
-export const TitleWrapperStyled = styled.div`
+export const SCTitleWrapper = styled.div`
   text-align: center;
   margin-bottom: 45px;
 `;
 
-export const BookWrapperStyled = styled.div`
+export const SCBookWrapper = styled.div`
   display: flex;
   justify-content: center;
 `;
 
-export const BookTitleStyled = styled.h2``;
+export const SCBookTitle = styled.h2``;
 
-export const ImageStyled = styled.img`
+export const SCImage = styled.img`
   max-width: 300px;
 `;
 
-export const InfoWrapper = styled.div`
+export const SCInfoWrapper = styled.div`
   width: 400px;
   margin-left: 50px;
 `;
 
-export const InfoWrapperItem = styled.div`
+export const SCInfoWrapperItem = styled.div`
   display: flex;
   position: relative;
   justify-content: space-between;
@@ -39,4 +39,8 @@ export const InfoWrapperItem = styled.div`
     width: 100%;
     border-bottom: 1px dashed black;
   }
+`;
+
+export const SCDescriptionWrapper = styled.div`
+  max-width: 700px;
 `;

@@ -2,14 +2,16 @@ import { useLocation, useParams } from "react-router-dom";
 import { useQuery, gql } from "@apollo/client";
 import { useEffect } from "react";
 import {
-  PageWrapperStyled,
-  BookWrapperStyled,
-  TitleWrapperStyled,
-  ImageStyled,
-  BookTitleStyled,
-  InfoWrapper,
-  InfoWrapperItem,
+  SCPageWrapper,
+  SCBookWrapper,
+  SCTitleWrapper,
+  SCImage,
+  SCBookTitle,
+  SCInfoWrapper,
+  SCInfoWrapperItem,
+  SCDescriptionWrapper,
 } from "./SingleBookPage.Styled";
+import SCButton from "../../components/Button/Button.Styled";
 
 export const BOOK = gql`
   query getSingleBook($id: ID!) {
@@ -46,6 +48,9 @@ export const BOOK = gql`
       }
       publishing_year
       suggested_year
+      description {
+        text
+      }
     }
   }
 `;
@@ -73,57 +78,62 @@ const SingleBookPage = () => {
     description,
     uid,
   } = data.book;
-  console.log(data);
+  console.log("DATA-SP", data);
   return (
     <>
       {data && (
-        <PageWrapperStyled>
-          <TitleWrapperStyled>
-            <BookTitleStyled>{title}</BookTitleStyled>
-          </TitleWrapperStyled>
+        <SCPageWrapper>
+          <SCButton primary>Go Back</SCButton>
+          <SCTitleWrapper>
+            <SCBookTitle>{title}</SCBookTitle>
+          </SCTitleWrapper>
 
-          <BookWrapperStyled>
+          <SCBookWrapper>
             <div>
-              <ImageStyled src={images[0].url} alt={images[0].title} />
+              <SCImage src={images[0].url} alt={images[0].title} />
             </div>
-            <InfoWrapper>
-              <InfoWrapperItem>
+            <SCInfoWrapper>
+              <SCInfoWrapperItem>
                 <p>Author</p>
                 <p>{authorData.title}</p>
-              </InfoWrapperItem>
-              <InfoWrapperItem>
+              </SCInfoWrapperItem>
+              <SCInfoWrapperItem>
                 <p>Genre</p>
                 <p>
                   {genre.map(({ title }) => {
                     return title;
                   })}
                 </p>
-              </InfoWrapperItem>
-              <InfoWrapperItem>
+              </SCInfoWrapperItem>
+              <SCInfoWrapperItem>
                 <p>Illustrations</p>
                 <p>{illustrations}</p>
-              </InfoWrapperItem>
-              <InfoWrapperItem>
+              </SCInfoWrapperItem>
+              <SCInfoWrapperItem>
                 <p>Number of pages</p>
                 <p>{number_of_pages}</p>
-              </InfoWrapperItem>
+              </SCInfoWrapperItem>
 
-              <InfoWrapperItem>
+              <SCInfoWrapperItem>
                 <p>Publishing year</p>
                 <p>{publishing_year}</p>
-              </InfoWrapperItem>
+              </SCInfoWrapperItem>
 
-              <InfoWrapperItem>
+              <SCInfoWrapperItem>
                 <p>For age of</p>
                 <p>{suggested_year}</p>
-              </InfoWrapperItem>
+              </SCInfoWrapperItem>
 
-              <InfoWrapperItem>
-                <p>{description?.text}</p>
-              </InfoWrapperItem>
-            </InfoWrapper>
-          </BookWrapperStyled>
-        </PageWrapperStyled>
+              <SCInfoWrapperItem>
+                <p>Publishing House</p>
+                <p>{publishing_house?.title}</p>
+              </SCInfoWrapperItem>
+            </SCInfoWrapper>
+          </SCBookWrapper>
+          <SCDescriptionWrapper>
+            <p>{description?.text}</p>
+          </SCDescriptionWrapper>
+        </SCPageWrapper>
       )}
     </>
   );
