@@ -10,8 +10,10 @@ import {
   SCInfoWrapper,
   SCInfoWrapperItem,
   SCDescriptionWrapper,
+  SCInfoList,
 } from "./SingleBookPage.Styled";
 import SCButton from "../../components/Button/Button.Styled";
+import Stars from "../../components/Stars/Stars";
 
 export const BOOK = gql`
   query getSingleBook($id: ID!) {
@@ -88,6 +90,7 @@ const SingleBookPage = () => {
           <SCButton primary onClick={goBack}>
             Go Back
           </SCButton>
+
           <SCTitleWrapper>
             <SCBookTitle>{title}</SCBookTitle>
           </SCTitleWrapper>
@@ -96,42 +99,47 @@ const SingleBookPage = () => {
             <div>
               <SCImage src={images[0].url} alt={images[0].title} />
             </div>
+
             <SCInfoWrapper>
-              <SCInfoWrapperItem>
-                <p>Author</p>
-                <p>{authorData.title}</p>
-              </SCInfoWrapperItem>
-              <SCInfoWrapperItem>
-                <p>Genre</p>
-                <p>
-                  {genre.map(({ title }) => {
-                    return title;
-                  })}
-                </p>
-              </SCInfoWrapperItem>
-              <SCInfoWrapperItem>
-                <p>Illustrations</p>
-                <p>{illustrations}</p>
-              </SCInfoWrapperItem>
-              <SCInfoWrapperItem>
-                <p>Number of pages</p>
-                <p>{number_of_pages}</p>
-              </SCInfoWrapperItem>
+              <Stars value={rating} />
 
-              <SCInfoWrapperItem>
-                <p>Publishing year</p>
-                <p>{publishing_year}</p>
-              </SCInfoWrapperItem>
+              <SCInfoList>
+                <SCInfoWrapperItem>
+                  <p>Author</p>
+                  <p>{authorData.title}</p>
+                </SCInfoWrapperItem>
+                <SCInfoWrapperItem>
+                  <p>Genre</p>
+                  <p>
+                    {genre.map(({ title }) => {
+                      return title;
+                    })}
+                  </p>
+                </SCInfoWrapperItem>
+                <SCInfoWrapperItem>
+                  <p>Illustrations</p>
+                  <p>{illustrations}</p>
+                </SCInfoWrapperItem>
+                <SCInfoWrapperItem>
+                  <p>Number of pages</p>
+                  <p>{number_of_pages}</p>
+                </SCInfoWrapperItem>
 
-              <SCInfoWrapperItem>
-                <p>For age of</p>
-                <p>{suggested_year}</p>
-              </SCInfoWrapperItem>
+                <SCInfoWrapperItem>
+                  <p>Publishing year</p>
+                  <p>{publishing_year}</p>
+                </SCInfoWrapperItem>
 
-              <SCInfoWrapperItem>
-                <p>Publishing House</p>
-                <p>{publishing_house?.title}</p>
-              </SCInfoWrapperItem>
+                <SCInfoWrapperItem>
+                  <p>For age of</p>
+                  <p>{suggested_year}</p>
+                </SCInfoWrapperItem>
+
+                <SCInfoWrapperItem>
+                  <p>Publishing House</p>
+                  <p>{publishing_house?.title}</p>
+                </SCInfoWrapperItem>
+              </SCInfoList>
             </SCInfoWrapper>
           </SCBookWrapper>
           <SCDescriptionWrapper>

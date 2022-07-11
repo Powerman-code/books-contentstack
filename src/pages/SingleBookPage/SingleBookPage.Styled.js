@@ -23,7 +23,11 @@ export const SCInfoWrapper = styled.div`
   margin-left: 50px;
 `;
 
-export const SCInfoWrapperItem = styled.div`
+export const SCInfoList = styled.ul`
+  margin-top: 50px;
+`;
+
+export const SCInfoWrapperItem = styled.li`
   display: flex;
   position: relative;
   justify-content: space-between;
