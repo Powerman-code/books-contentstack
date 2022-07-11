@@ -1,31 +1,30 @@
 import { NavLink, Link } from "react-router-dom";
 
 import {
-  LogoWrapper,
-  NavMenu,
-  NavItemStyled,
-  NavBlock,
+  SCLogoWrapper,
+  SCNavMenu,
+  SCNavItemStyled,
+  SCNavBlock,
 } from "./Navigation.Styled";
 
 export default function Navigation({ logo, links }) {
   return (
-    <NavBlock>
+    <SCNavBlock>
       <Link to="/">
-        <LogoWrapper>
+        <SCLogoWrapper>
           <img alt={logo?.title} src={logo?.url} />
-        </LogoWrapper>
+        </SCLogoWrapper>
       </Link>
 
-      <NavMenu>
+      <SCNavMenu>
         {links?.map((link) => {
-          //   console.log(link);
           return (
-            <NavItemStyled key={link.page_reference.uid} color={"#f2f2f2"}>
+            <SCNavItemStyled key={link.page_reference.uid} color={"#f2f2f2"}>
               <NavLink to={link}>{link.label}</NavLink>
-            </NavItemStyled>
+            </SCNavItemStyled>
           );
         })}
-      </NavMenu>
-    </NavBlock>
+      </SCNavMenu>
+    </SCNavBlock>
   );
 }

@@ -1,15 +1,15 @@
 import styled from "styled-components";
 
-export const GaleryWrapperStyled = styled.div``;
+export const SCGaleryWrapper = styled.div``;
 
-export const TitleWrapperStyled = styled.div`
+export const SCTitleWrapper = styled.div`
   text-align: center;
   margin-bottom: 45px;
 `;
 
-export const GaleryTitleStyled = styled.h2``;
+export const SCGaleryTitle = styled.h2``;
 
-export const CardListStyled = styled.ul`
+export const SCCardList = styled.ul`
   display: grid;
   max-width: 870px;
   margin: 0 auto;

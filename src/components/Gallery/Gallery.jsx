@@ -1,23 +1,23 @@
 import BookCard from "../BookCard/BookCard";
 import {
-  GaleryWrapperStyled,
-  GaleryTitleStyled,
-  CardListStyled,
-  TitleWrapperStyled,
+  SCGaleryWrapper,
+  SCGaleryTitle,
+  SCCardList,
+  SCTitleWrapper,
 } from "./Gallery.Styled";
 
 const Gallery = ({ books }) => {
   return (
-    <GaleryWrapperStyled>
-      <TitleWrapperStyled>
-        <GaleryTitleStyled>Book Galery</GaleryTitleStyled>
-      </TitleWrapperStyled>
-      <CardListStyled>
+    <SCGaleryWrapper>
+      <SCTitleWrapper>
+        <SCGaleryTitle>Book Galery</SCGaleryTitle>
+      </SCTitleWrapper>
+      <SCCardList>
         {books.map((book) => {
           return <BookCard book={book} key={book.uid} />;
         })}
-      </CardListStyled>
-    </GaleryWrapperStyled>
+      </SCCardList>
+    </SCGaleryWrapper>
   );
 };
 

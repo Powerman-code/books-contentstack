@@ -1,11 +1,10 @@
 import { Link } from "react-router-dom";
 import {
-  CardStyled,
-  ImageWrapperStyled,
-  CardInfoStyled,
-  CardItemStyled,
-  CardTitleStyled,
-  CardTextStyled,
+  SCCard,
+  SCImageWrapper,
+  SCCardInfo,
+  SCCardTitle,
+  SCCardText,
 } from "./BookCard.Styled";
 import Stars from "../Stars/Stars";
 const BookCard = ({
@@ -14,8 +13,8 @@ const BookCard = ({
 }) => {
   console.log(book);
   return (
-    <CardStyled>
-      <ImageWrapperStyled>
+    <SCCard>
+      <SCImageWrapper>
         <Link
           to={{
             pathname: `/galery/${uid}`,
@@ -23,19 +22,19 @@ const BookCard = ({
         >
           <img alt={images[0].title} src={images[0].url} />
         </Link>
-      </ImageWrapperStyled>
-      <CardInfoStyled>
+      </SCImageWrapper>
+      <SCCardInfo>
         <Stars value={rating} />
         <Link
           to={{
             pathname: `/galery/${uid}`,
           }}
         >
-          <CardTitleStyled>{title}</CardTitleStyled>
+          <SCCardTitle>{title}</SCCardTitle>
         </Link>
-        <CardTextStyled>{authorData?.title}</CardTextStyled>
-      </CardInfoStyled>
-    </CardStyled>
+        <SCCardText>{authorData?.title}</SCCardText>
+      </SCCardInfo>
+    </SCCard>
   );
 };
 

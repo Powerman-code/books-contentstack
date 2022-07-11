@@ -1,6 +1,5 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useQuery, gql } from "@apollo/client";
-import { useEffect } from "react";
 import {
   SCPageWrapper,
   SCBookWrapper,
@@ -14,6 +13,8 @@ import {
 } from "./SingleBookPage.Styled";
 import SCButton from "../../components/Button/Button.Styled";
 import Stars from "../../components/Stars/Stars";
+import { Circles } from "react-loader-spinner";
+import Spinner from "../../components/Spinner/Spinner";
 
 export const BOOK = gql`
   query getSingleBook($id: ID!) {
@@ -66,7 +67,7 @@ const SingleBookPage = () => {
   const navigate = useNavigate();
   const goBack = () => navigate(-1);
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <Spinner height="150" width="150" color="#00BFFF" />;
 
   const {
     images,

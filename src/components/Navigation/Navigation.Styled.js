@@ -1,12 +1,12 @@
 import styled, { css } from "styled-components";
 
-export const NavBlock = styled.nav`
+export const SCNavBlock = styled.nav`
   display: flex;
   align-items: center;
   justify-content: space-between;
 `;
 
-export const LogoWrapper = styled.div`
+export const SCLogoWrapper = styled.div`
   display: flex;
   align-items: center;
 
@@ -15,20 +15,17 @@ export const LogoWrapper = styled.div`
     height: 100px;
   }
 
-  @media screen and (max-width: 740px) {
-    width: 100%;
-    margin-bottom: 20px;
-    order: 1;
-    justify-content: flex-start;
-  }
+  /* @media screen and (max-width: 740px) {
+
+  } */
 `;
 
-export const NavMenu = styled.ul`
+export const SCNavMenu = styled.ul`
   display: flex;
   align-items: center;
 `;
 
-export const NavItemStyled = styled.li`
+export const SCNavItemStyled = styled.li`
   a {
     display: inline-block;
     text-decoration: none;

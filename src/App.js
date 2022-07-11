@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
-// import Router from "./components/Router/Router";
 import { Route, Routes, Navigate } from "react-router-dom";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Layout from "./components/Layout/Layout";
 import HomePage from "./pages/HomePage/HomePage";
 import Page404 from "./pages/Page404";
